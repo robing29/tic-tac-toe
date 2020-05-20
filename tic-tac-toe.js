@@ -6,65 +6,85 @@
 //properties = dialinksoben, dialinksunten, diarechtsoben, diarechtsunten, links, rechts, oben, unten
 window.onload = function(){
     
-    let a1 = document.getElementById("a1");
-    let a2 = document.getElementById("a2");
-    let a3 = document.getElementById("a3");
-    let b1 = document.getElementById("b1");
-    let b2 = document.getElementById("b2");
-    let b3 = document.getElementById("b3");
-    let c1 = document.getElementById("c1");
-    let c2 = document.getElementById("c2");
-    let c3 = document.getElementById("c3");
+    var a1 = document.getElementById("a1");
+    var a2 = document.getElementById("a2");
+    var a3 = document.getElementById("a3");
+    var b1 = document.getElementById("b1");
+    var b2 = document.getElementById("b2");
+    var b3 = document.getElementById("b3");
+    var c1 = document.getElementById("c1");
+    var c2 = document.getElementById("c2");
+    var c3 = document.getElementById("c3");
     
-    let lasthitkreuz = true;
-    
+    var lasthitkreuz = true;
+    var kreiswin = false;
+    var kreuzwin = false;
+
+
     var gameover = false;
     
     //hita1 = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
-    let hita1 = 0;
-    let hita2 = 0;
-    let hita3 = 0;
-    let hitb1 = 0;
-    let hitb2 = 0;
-    let hitb3 = 0;
-    let hitc1 = 0;
-    let hitc2 = 0;
-    let hitc3 = 0;
-
-function assignValue(feldvalue){        
-    function getHitvalue(feldvalue){
-        if(feldvalue == 0){
-            if(lasthitkreuz){
-                return 1;
-            } else {
-                return 2;
+    a1.hit = 0;
+    a2.hit = 0;
+    a3.hit = 0;
+    b1.hit = 0;
+    b2.hit = 0;
+    b3.hit = 0;
+    c1.hit = 0;
+    c2.hit = 0;
+    c3.hit = 0;
+    
+    function checkWincondition(){
+        if(a1.hit==1 && a2.hit==1 && a3.hit==1 || a1.hit==1 && b1.hit==1 && c1.hit==1 || a1.hit==1 && b2.hit==1 && c3.hit==1 || a3.hit==1 && b2.hit==1 && c1.hit==1 || a3.hit==1 && b3.hit==1 && c3.hit==1 || b1.hit==1 && b2.hit==1 && b3.hit==1 || c1.hit==1 && c2.hit==1 && c3.hit==1 || a2.hit==1 && b2.hit==1 && c2.hit==1){
+            ("Kreis gewinnt");
+            gameover = true;
+        } else if   (a1.hit==2 && a2.hit==2 && a3.hit==2 || a1.hit==2 && b1.hit==2 && c1.hit==2 || a1.hit==2 && b2.hit==2 && c3.hit==2 || a3.hit==2 && b2.hit==2 && c1.hit==2 || a3.hit==2 && b3.hit==2 && c3.hit==2 || b1.hit==2 && b2.hit==2 && b3.hit==2 || c1.hit==2 && c2.hit==2 && c3.hit==2 || a2.hit==2 && b2.hit==2 && c2.hit==2){
+            alert("Kreuz gewinnt");
+            gameover = true;
+        } else
+        alert("Weiter geht's!");
+        gameover = false;
+    }
+    
+    function doEverything(feld){        
+        function assignHitvalue(feld){
+            if(feld.hit == 0){
+                if(lasthitkreuz){
+                    feld.hit = 1;
+                    lasthitkreuz = false;
+                } else {
+                    feld.hit = 2;
+                    lasthitkreuz = true;
+                }
             }
-        } else if (feldvalue == 1){
-            return 1;
-        } else {
-            return 2;
         }
-    }
-    feldvalue = getHitvalue(feldvalue);
-}
-
-    function assignClass(feld,fval){
-        if(fval == 1){
-            feld.classList.toggle("Kreis",true);
-        } else if (fval == 2){
-            feld.classList.toggle("Kreuz",true);
+        function assignClass(feld){
+            if(feld.hit == 1){
+                feld.classList.toggle("Kreis",true);
+            } else if (feld.hit == 2){
+                feld.classList.toggle("Kreuz",true);
+            }
         }
+        
+        assignHitvalue(feld);
+        assignClass(feld);
+        checkWincondition();
     }
-
-/*     function assignValue (a){
+    
+    
+    
+    /*     function assignValue (a){
         a1 = getHitvalue(a);
     } */
-    
+    console.log(gameover);
+
     a1.onclick = function(){
+        doEverything(a1);
         //hita1 = getHitvalue(hita1);
-        assignValue(hita1);
-        assignClass(a1,hita1);
-        console.log(hita1);
+        //getHitvalue(a1);
+        //assignClass(a1,hita1);
+        console.log(a1.hit);
+        console.log(gameover);
     }
     
     /* logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
@@ -120,8 +140,8 @@ function assignValue(feldvalue){
     c3.onclick = function(){
         feldGetsClicked(c3, hitc3);
     } */
-
-
+    
+    
     
     /* a1.onclick = function(){
         if (hita1==0 && gameover==false){
@@ -321,27 +341,18 @@ function assignValue(feldvalue){
             console.log(gameover);
         }
     } */
-
+    
 }
 
 
 
 /* checkWincondition = function(a1,a2,a3,b1,b2,b3,c1,c2,c3){
-    if  (a1==1 && a2==1 && a3==1 || a1==1 && b1==1 && c1==1 || a1==1 && b2==1 && c3==1 || a3==1 && b2==1 && c1==1 || a3==1 && b3==1 && c3==1 || b1==1 && b2==1 && b3==1 || c1==1 && c2==1 && c3==1 || a2==1 && b2==1 && c2==1){
-            alert("Kreis gewinnt");
-            return true;
-        } else if   (a1==2 && a2==2 && a3==2 || a1==2 && b1==2 && c1==2 || a1==2 && b2==2 && c3==2 || a3==2 && b2==2 && c1==2 || a3==2 && b3==2 && c3==2 || b1==2 && b2==2 && b3==2 || c1==2 && c2==2 && c3==2 || a2==2 && b2==2 && c2==2){
-                alert("Kreuz gewinnt");
-                return true;
-            } else
-            alert("Weiter geht's!");
-            return false;
-        }
-        
-logVars = function(){
-            for(let i = 0; i < 9; i++){
-                console.log(i+"="+arguments[i]);
-            }
-        } */
-        
-        
+    
+} */
+
+/* logVars = function(){
+    for(let i = 0; i < 9; i++){
+        console.log(i+"="+arguments[i]);
+    }
+} */
+
