@@ -19,3 +19,9 @@ body{
     width: 20vh;
     display: inline-block;
 }
+.Kreuz{
+    background-color: red;
+}
+.Kreis{
+    background-color: blue;
+}

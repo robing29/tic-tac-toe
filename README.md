@@ -9,3 +9,4 @@ replace alerts with css classnames
 display gameover message
 display button for restarting the game
 use button to reset the playing field
+Choose starting symbol

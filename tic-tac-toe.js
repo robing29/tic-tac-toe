@@ -20,8 +20,6 @@ window.onload = function(){
     
     var gameover = false;
     
-    
-    
     //hita1 = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
     let hita1 = 0;
     let hita2 = 0;
@@ -32,24 +30,74 @@ window.onload = function(){
     let hitc1 = 0;
     let hitc2 = 0;
     let hitc3 = 0;
-    
-    logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-    
-    
-    
+
+
+    function getHitvalue(feldvalue){
+        if(feldvalue == 0){
+            if(lasthitkreuz){
+                return 1;
+            } else {
+                return 2;
+            }
+        } else if (feldvalue == 1){
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    function assignClass(feld,fval){
+        if(fval == 1){
+            feld.classList.toggle("Kreis",true);
+        } else if (fval == 2){
+            feld.classList.toggle("Kreuz",true);
+        }
+    }
+
     function assignValue (a){
         a = getHitvalue(a);
     }
     
-/*     a1.onclick = function(){
+    a1.onclick = function(){
+        hita1 = getHitvalue(hita1);
+        assignClass(a1,hita1);
+        console.log(hita1);
+    }
+    
+    /* logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
+    
+    feldGetsClicked = function(feld,feldvariable){
+        if(feldvariable==0 && gameover==false){
+            if(lasthitkreuz){
+                feld.innerHTML = "Kreis";
+                lasthitkreuz = false;
+                feldvariable = 1;
+                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
+                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
+                console.log(gameover);                
+            } else {
+                feld.innerHTML = "Kreuz";
+                lasthitkreuz = true;
+                feldvariable = 2;
+                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
+                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
+                console.log(gameover);                
+            }
+        } else {
+            alert("Schon geklickt oder gameover");
+            console.log(gameover);            
+        }
+    }
+    
+    
+    a1.onclick = function(){
         feldGetsClicked(a1, hita1);
-    } */
-    /**
+    }
     a2.onclick = function(){
         feldGetsClicked(a2, hita2);
     }
     a3.onclick = function(){
-        feldGetsClicked(a3, hitc3);
+        feldGetsClicked(a3, hita3);
     }
     b1.onclick = function(){
         feldGetsClicked(b1, hitb1);
@@ -58,7 +106,7 @@ window.onload = function(){
         feldGetsClicked(b2, hitb2);
     }
     b3.onclick = function(){
-        feldGetsClicked(b3, hitc3);
+        feldGetsClicked(b3, hitb3);
     }
     c1.onclick = function(){
         feldGetsClicked(c1, hitc1);
@@ -69,8 +117,10 @@ window.onload = function(){
     c3.onclick = function(){
         feldGetsClicked(c3, hitc3);
     } */
+
+
     
-    a1.onclick = function(){
+    /* a1.onclick = function(){
         if (hita1==0 && gameover==false){
             if(lasthitkreuz){
                 a1.innerHTML = "Kreis";
@@ -267,50 +317,17 @@ window.onload = function(){
             alert("Schon geklickt oder gameover");
             console.log(gameover);
         }
-    }
-    feldGetsClicked = function(feld,feldvariable){
-        if(feldvariable==0 && gameover==false){
-            if(lasthitkreuz){
-                feld.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                feldvariable = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                feld.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                feldvariable = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else {
-            alert("Schon geklickt oder gamerover");
-            console.log(gameover);
-        }
-    }
+    } */
+
 }
 
-checkWincondition = function(a1,a2,a3,b1,b2,b3,c1,c2,c3){
-    if  (a1==1 && a2==1 && a3==1 || 
-        a1==1 && b1==1 && c1==1 ||
-        a1==1 && b2==1 && c3==1 ||
-        a3==1 && b2==1 && c1==1 ||
-        a3==1 && b3==1 && c3==1 ||
-        b1==1 && b2==1 && b3==1 ||
-        c1==1 && c2==1 && c3==1 ||
-        a2==1 && b2==1 && c2==1){
+
+
+/* checkWincondition = function(a1,a2,a3,b1,b2,b3,c1,c2,c3){
+    if  (a1==1 && a2==1 && a3==1 || a1==1 && b1==1 && c1==1 || a1==1 && b2==1 && c3==1 || a3==1 && b2==1 && c1==1 || a3==1 && b3==1 && c3==1 || b1==1 && b2==1 && b3==1 || c1==1 && c2==1 && c3==1 || a2==1 && b2==1 && c2==1){
             alert("Kreis gewinnt");
             return true;
-        } else if   (a1==2 && a2==2 && a3==2 ||
-            a1==2 && b1==2 && c1==2 ||
-            a1==2 && b2==2 && c3==2 ||
-            a3==2 && b2==2 && c1==2 ||
-            a3==2 && b3==2 && c3==2 ||
-            b1==2 && b2==2 && b3==2 ||
-            c1==2 && c2==2 && c3==2 ||
-            a2==2 && b2==2 && c2==2){
+        } else if   (a1==2 && a2==2 && a3==2 || a1==2 && b1==2 && c1==2 || a1==2 && b2==2 && c3==2 || a3==2 && b2==2 && c1==2 || a3==2 && b3==2 && c3==2 || b1==2 && b2==2 && b3==2 || c1==2 && c2==2 && c3==2 || a2==2 && b2==2 && c2==2){
                 alert("Kreuz gewinnt");
                 return true;
             } else
@@ -322,6 +339,6 @@ logVars = function(){
             for(let i = 0; i < 9; i++){
                 console.log(i+"="+arguments[i]);
             }
-        }
+        } */
         
         
