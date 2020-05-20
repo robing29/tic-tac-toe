@@ -12,9 +12,10 @@ body{
     border-collapse: collapse;
     table-layout: fixed;
     width: 100%;
-    min-height: 60vh;
-    max-height: 80vh;
 }
 #field td{
-    border: 2px solid red;
+    border: 1px solid red;
+    height: 20vh;
+    width: 20vh;
+    display: inline-block;
 }
