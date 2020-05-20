@@ -1,7 +1,7 @@
 # Tic-Tac-Toe
 Tic-Tac-Toe game in JavaScript, written for testing git and my programming skills
 
-First working version. 
+Fixed bug
 
 to be done:
 clean up code, trying to shorten the functions
