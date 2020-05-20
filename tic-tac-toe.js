@@ -37,6 +37,9 @@ window.onload = function(){
     
     
     
+    function assignValue (a){
+        a = getHitvalue(a);
+    }
     
 /*     a1.onclick = function(){
         feldGetsClicked(a1, hita1);
