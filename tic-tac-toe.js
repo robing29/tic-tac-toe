@@ -31,7 +31,7 @@ window.onload = function(){
     let hitc2 = 0;
     let hitc3 = 0;
 
-
+function assignValue(feldvalue){        
     function getHitvalue(feldvalue){
         if(feldvalue == 0){
             if(lasthitkreuz){
@@ -45,6 +45,8 @@ window.onload = function(){
             return 2;
         }
     }
+    feldvalue = getHitvalue(feldvalue);
+}
 
     function assignClass(feld,fval){
         if(fval == 1){
@@ -54,12 +56,13 @@ window.onload = function(){
         }
     }
 
-    function assignValue (a){
-        a = getHitvalue(a);
-    }
+/*     function assignValue (a){
+        a1 = getHitvalue(a);
+    } */
     
     a1.onclick = function(){
-        hita1 = getHitvalue(hita1);
+        //hita1 = getHitvalue(hita1);
+        assignValue(hita1);
         assignClass(a1,hita1);
         console.log(hita1);
     }
