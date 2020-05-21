@@ -28,12 +28,15 @@ window.onload = function(){
     //Kreis und Kreuz-Button
     var kreisBtn = document.getElementById("kreisBtn");
     var kreuzBtn = document.getElementById("kreuzBtn");
+    var startWith = this.document.getElementById("startwith");
 
     var isLastHitKreuz = true;
+    var isHit = false;
     
     var isGameOver = false;
     var isKreuzWin = false;
     var isKreisWin = false;
+    var isRemis = false;
     
     var feldArray = [a1,a2,a3,b1,b2,b3,c1,c2,c3];
     
@@ -42,6 +45,7 @@ window.onload = function(){
     function hideChangeButtons(){
         kreisBtn.style.visibility = "hidden";
         kreuzBtn.style.visibility = "hidden";
+        startWith.style.visibility = "hidden";
     }
 
     kreisBtn.onclick = function(){
@@ -89,6 +93,13 @@ window.onload = function(){
         }
     }
     
+    //Check if every field has been hit by checking if every field in the array is not 0 anymore.
+    function checkRemis(){
+            //for(let i = 0; i < feldArray.length;)
+            isHit = feldArray.every(x => x.hit != 0);
+            console.log(isHit);
+        }
+
     //set gameover wenn Kreis oder Kreuz gewinnt
     function setzeGameover(){
         if(isGameOver==false){
@@ -100,6 +111,12 @@ window.onload = function(){
                 alert("Kreuz gewinnt");
                 isKreuzWin = true;
                 isGameOver = true;
+            } else if (isHit == true && isGameOver == false){
+                isGameOver = true;
+                isKreuzWin = false;
+                isKreisWin = false;
+                isRemis = true;
+                console.log("Ist Remis");
             } else { 
                 isGameOver = false;
             }
@@ -158,6 +175,7 @@ window.onload = function(){
         hideChangeButtons();
         assignHitvalue(feld);
         assignClass(feld);
+        checkRemis();
         setzeGameover();
         changeCursor();
         displayGameOver();
