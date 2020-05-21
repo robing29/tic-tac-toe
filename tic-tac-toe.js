@@ -101,7 +101,6 @@ window.onload = function(){
                 isKreuzWin = true;
                 isGameOver = true;
             } else { 
-                alert("Weiter geht's!");
                 isGameOver = false;
             }
         } 
@@ -145,12 +144,12 @@ window.onload = function(){
         //Assigne Class wenn hit 1 oder hit 2
         function assignClass(feld){
             if(feld.hit == 1){
-                feld.classList.toggle("Kreis",true);
+                feld.innerHTML = '<div class="Kreis"></div>';
             } else if (feld.hit == 2){
-                feld.classList.toggle("Kreuz",true);
+                feld.innerHTML = '<div class="Kreuz"></div>';
             }
         }
-        //
+        //Wenn das Spiel vorbei ist, dann lasse keine onclick-Funktionen mehr zu
         if(isGameOver==true){
             return;
         }
