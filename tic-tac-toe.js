@@ -15,7 +15,7 @@ window.onload = function(){
     var c1 = document.getElementById("c1");
     var c2 = document.getElementById("c2");
     var c3 = document.getElementById("c3");
-
+    
     var field = document.getElementById("field");
     
     var idgameover = document.getElementById("id-gameover");
@@ -26,25 +26,30 @@ window.onload = function(){
     var isGameOver = false;
     var isKreuzWin = false;
     var isKreisWin = false;
-
+    
     var feldArray = [a1,a2,a3,b1,b2,b3,c1,c2,c3];
-
+    
     //Change Cursor depending on isLastHitKreuz == true
     function changeCursor(){
-        if(isLastHitKreuz==true){
-            field.classList.add("kreisCursor");
-            field.classList.remove("kreuzCursor");
-        } else if(isLastHitKreuz==false){
-            field.classList.remove("kreisCursor");
-            field.classList.add("kreuzCursor");
+        if(isGameOver==false){
+            if(isLastHitKreuz==true){
+                field.classList.add("kreisCursor");
+                field.classList.remove("kreuzCursor");
+            } else if(isLastHitKreuz==false){
+                field.classList.remove("kreisCursor");
+                field.classList.add("kreuzCursor");
+            }
+        } else {
+            field.classList.remove("kreisCursor", "kreuzCursor");
+        }
+        
     }
-}
     
     //[i].hit = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
     function setHitVariables(){
         for(let i = 0; i < feldArray.length;i++){
             feldArray[i].hit = 0;
-            }
+        }
     }
     
     //for-loop to create onclick functions
@@ -57,7 +62,7 @@ window.onload = function(){
             }
         }
     }
-
+    
     //set gameover wenn Kreis oder Kreuz gewinnt
     function setzeGameover(){
         if(isGameOver==false){
@@ -75,7 +80,7 @@ window.onload = function(){
             }
         } 
     }
-
+    
     //Wenn gameover==true, dann wird gecheckt, welcher Spieler gewonnen hat und das Ergebnis angezeigt
     function displayGameOver(){
         if(isGameOver){
@@ -87,7 +92,7 @@ window.onload = function(){
             displayResetButton();         
         } 
     }
-
+    
     //Zeige ResetButton bei GameOver an, lasse Ihn die Page reloaden
     function displayResetButton(){
         resetBtn.style.visibility = "visible";
@@ -95,10 +100,10 @@ window.onload = function(){
             location.reload();
         }
     }
-
+    
     //Nested function, takes a1 or b3 etc. as arguments
     function doEverything(feld){
-                
+        
         //Assigne Hit value 1 wenn kreis gezeichnet, Assigne Hit value 2 wenn kreuz
         function assignHitvalue(feld){
             if(feld.hit == 0){
@@ -123,20 +128,20 @@ window.onload = function(){
         if(isGameOver==true){
             return;
         }
-
+        
         //Führe alle Funktionen aus
         assignHitvalue(feld);
         assignClass(feld);
-        changeCursor();
         setzeGameover();
+        changeCursor();
         displayGameOver();
     }
-
+    
     //Initialise Game:
     changeCursor();
     //Setze alle variablen auf 0
     setHitVariables();
     //Erstelle onclick-Funktionen, deren Inhalt doEverything() ist.
     setOnclickFunc();
-
+    
 }
