@@ -16,11 +16,19 @@ window.onload = function(){
     var c2 = document.getElementById("c2");
     var c3 = document.getElementById("c3");
     
+    //Tabelle
     var field = document.getElementById("field");
     
+    //GameOver-Span
     var idgameover = document.getElementById("id-gameover");
+
+    //Reset-Button
     var resetBtn = document.getElementById("resetBtn");
     
+    //Kreis und Kreuz-Button
+    var kreisBtn = document.getElementById("kreisBtn");
+    var kreuzBtn = document.getElementById("kreuzBtn");
+
     var isLastHitKreuz = true;
     
     var isGameOver = false;
@@ -29,6 +37,24 @@ window.onload = function(){
     
     var feldArray = [a1,a2,a3,b1,b2,b3,c1,c2,c3];
     
+
+    //Hide Buttons after first click in cell
+    function hideChangeButtons(){
+        kreisBtn.style.visibility = "hidden";
+        kreuzBtn.style.visibility = "hidden";
+    }
+
+    kreisBtn.onclick = function(){
+        isLastHitKreuz = true;
+        hideChangeButtons();
+        changeCursor();
+    }
+    kreuzBtn.onclick = function(){
+        isLastHitKreuz = false;
+        hideChangeButtons();
+        changeCursor();
+    }
+
     //Change Cursor depending on isLastHitKreuz == true
     function changeCursor(){
         if(isGameOver==false){
@@ -130,6 +156,7 @@ window.onload = function(){
         }
         
         //Führe alle Funktionen aus
+        hideChangeButtons();
         assignHitvalue(feld);
         assignClass(feld);
         setzeGameover();
