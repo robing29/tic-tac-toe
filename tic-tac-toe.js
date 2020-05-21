@@ -15,6 +15,8 @@ window.onload = function(){
     var c1 = document.getElementById("c1");
     var c2 = document.getElementById("c2");
     var c3 = document.getElementById("c3");
+
+    var field = document.getElementById("field");
     
     var idgameover = document.getElementById("id-gameover");
     var resetBtn = document.getElementById("resetBtn");
@@ -26,6 +28,17 @@ window.onload = function(){
     var isKreisWin = false;
 
     var feldArray = [a1,a2,a3,b1,b2,b3,c1,c2,c3];
+
+    //Change Cursor depending on isLastHitKreuz == true
+    function changeCursor(){
+        if(isLastHitKreuz==true){
+            field.classList.add("kreisCursor");
+            field.classList.remove("kreuzCursor");
+        } else if(isLastHitKreuz==false){
+            field.classList.remove("kreisCursor");
+            field.classList.add("kreuzCursor");
+    }
+}
     
     //[i].hit = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
     function setHitVariables(){
@@ -106,6 +119,7 @@ window.onload = function(){
                 feld.classList.toggle("Kreuz",true);
             }
         }
+        //
         if(isGameOver==true){
             return;
         }
@@ -113,11 +127,13 @@ window.onload = function(){
         //Führe alle Funktionen aus
         assignHitvalue(feld);
         assignClass(feld);
+        changeCursor();
         setzeGameover();
         displayGameOver();
     }
 
     //Initialise Game:
+    changeCursor();
     //Setze alle variablen auf 0
     setHitVariables();
     //Erstelle onclick-Funktionen, deren Inhalt doEverything() ist.

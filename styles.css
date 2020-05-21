@@ -17,7 +17,6 @@ body{
 #field{
     border-collapse: collapse;
     table-layout: fixed;
-    cursor: url("kreuz.png"), auto;
 }
 #field td{
     border: 1px solid red;
