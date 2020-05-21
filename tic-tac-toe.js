@@ -27,17 +27,21 @@ window.onload = function(){
 
     var feldArray = [a1,a2,a3,b1,b2,b3,c1,c2,c3];
     
-    //hita1 = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
-    for(let i = 0; i < feldArray.length;i++){
-        feldArray[i].hit = 0;
-        }
+    //[i].hit = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
+    function setHitVariables(){
+        for(let i = 0; i < feldArray.length;i++){
+            feldArray[i].hit = 0;
+            }
+    }
     
     //for-loop to create onclick functions
-    for(let i = 0; i < feldArray.length;i++){
-        feldArray[i].onclick = function(){
-            doEverything(feldArray[i]);
-            console.log(feldArray[i].hit);
-            console.log(isGameOver);
+    function setOnclickFunc(){
+        for(let i = 0; i < feldArray.length;i++){
+            feldArray[i].onclick = function(){
+                doEverything(feldArray[i]);
+                console.log(feldArray[i].hit);
+                console.log(isGameOver);
+            }
         }
     }
 
@@ -70,12 +74,16 @@ window.onload = function(){
             displayResetButton();         
         } 
     }
+
+    //Zeige ResetButton bei GameOver an, lasse Ihn die Page reloaden
     function displayResetButton(){
         resetBtn.style.visibility = "visible";
         resetBtn.onclick = function(){
             location.reload();
         }
     }
+
+    //Nested function, takes a1 or b3 etc. as arguments
     function doEverything(feld){
                 
         //Assigne Hit value 1 wenn kreis gezeichnet, Assigne Hit value 2 wenn kreuz
@@ -101,55 +109,18 @@ window.onload = function(){
         if(isGameOver==true){
             return;
         }
+
+        //Führe alle Funktionen aus
         assignHitvalue(feld);
         assignClass(feld);
         setzeGameover();
         displayGameOver();
     }
 
-  /*   a1.onclick = function(){
-        doEverything(a1);
-        console.log(a1.hit);
-        console.log(isGameOver);
-    }
-    a2.onclick = function(){
-        doEverything(a2);
-        console.log(a2.hit);
-        console.log(isGameOver);
-    }
-    a3.onclick = function(){
-        doEverything(a3);
-        console.log(a3.hit);
-        console.log(isGameOver);
-    }
-    b1.onclick = function(){
-        doEverything(b1);
-        console.log(b1.hit);
-        console.log(isGameOver);
-    }
-    b2.onclick = function(){
-        doEverything(b2);
-        console.log(b2.hit);
-        console.log(isGameOver);
-    }
-    b3.onclick = function(){
-        doEverything(b3);
-        console.log(b3.hit);
-        console.log(isGameOver);
-    }
-    c1.onclick = function(){
-        doEverything(c1);
-        console.log(c1.hit);
-        console.log(isGameOver);
-    }
-    c2.onclick = function(){
-        doEverything(c2);
-        console.log(c2.hit);
-        console.log(isGameOver);
-    }
-    c3.onclick = function(){
-        doEverything(c3);
-        console.log(c3.hit);
-        console.log(isGameOver);
-    } */
+    //Initialise Game:
+    //Setze alle variablen auf 0
+    setHitVariables();
+    //Erstelle onclick-Funktionen, deren Inhalt doEverything() ist.
+    setOnclickFunc();
+
 }
