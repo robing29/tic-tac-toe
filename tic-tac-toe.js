@@ -35,6 +35,13 @@ window.onload = function(){
     c2.hit = 0;
     c3.hit = 0;
     
+    //Was ist zu tun, wenn gameover erreich ist? Nichts machen
+/*     function ifgameover(){
+        if(isGameOver==true){
+            return;
+        }
+    } */
+
     //set gameover wenn Kreis oder Kreuz gewinnt
     function setzeGameover(){
         if(isGameOver==false){
@@ -61,7 +68,8 @@ window.onload = function(){
             }            
         }
     }
-    function doEverything(feld){        
+    function doEverything(feld){
+                
         //Assigne Hit value 1 wenn kreis gezeichnet, Assigne Hit value 2 wenn kreuz
         function assignHitvalue(feld){
             if(feld.hit == 0){
@@ -81,6 +89,9 @@ window.onload = function(){
             } else if (feld.hit == 2){
                 feld.classList.toggle("Kreuz",true);
             }
+        }
+        if(isGameOver==true){
+            return;
         }
         assignHitvalue(feld);
         assignClass(feld);
