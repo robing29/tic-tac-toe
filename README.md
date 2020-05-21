@@ -1,7 +1,7 @@
 # Tic-Tac-Toe
 Tic-Tac-Toe game in JavaScript, written for testing git and my programming skills
 
-Next: Trying karl's idea of an array and checking a1.hit etc. against aktuellerSpieler == 1 or 2
+// Not necessary? Next: Trying karl's idea of an array and checking a1.hit etc. against aktuellerSpieler == 1 or 2
 
 
 to be done:
