@@ -58,6 +58,8 @@ window.onload = function(){
             }
         } 
     }
+
+    //Wenn gameover==true, dann wird gecheckt, welcher Spieler gewonnen hat und das Ergebnis angezeigt
     function displayGameOver(){
         if(isGameOver){
             if(isKreisWin==true){
@@ -70,6 +72,9 @@ window.onload = function(){
     }
     function displayResetButton(){
         resetBtn.style.visibility = "visible";
+        resetBtn.onclick = function(){
+            location.reload();
+        }
     }
     function doEverything(feld){
                 
