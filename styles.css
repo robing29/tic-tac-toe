@@ -1,8 +1,8 @@
 .kreisCursor{
     cursor: url("circle3.png"), auto;
 }
-.KreuzCursor{
-    cursor: url("Kreuz.png"), auto;
+.kreuzCursor{
+    cursor: url("kreuz.png"), auto;
 }
 body{
     border: 1px solid black;
