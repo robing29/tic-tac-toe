@@ -26,3 +26,6 @@ body{
 .Kreis{
     background-color: blue;
 }
+#resetBtn{
+    visibility: hidden;
+}

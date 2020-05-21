@@ -17,6 +17,7 @@ window.onload = function(){
     var c3 = document.getElementById("c3");
     
     var idgameover = document.getElementById("id-gameover");
+    var resetBtn = document.getElementById("resetBtn");
     
     var isLastHitKreuz = true;
     
@@ -30,15 +31,6 @@ window.onload = function(){
     for(let i = 0; i < feldArray.length;i++){
         feldArray[i].hit = 0;
         }
-/*     a1.hit = 0;
-    a2.hit = 0;
-    a3.hit = 0;
-    b1.hit = 0;
-    b2.hit = 0;
-    b3.hit = 0;
-    c1.hit = 0;
-    c2.hit = 0;
-    c3.hit = 0; */
     
     //for-loop to create onclick functions
     for(let i = 0; i < feldArray.length;i++){
@@ -72,8 +64,12 @@ window.onload = function(){
                 idgameover.innerHTML = "GameOver - Kreis gewinnt!";
             } else if(isKreuzWin==true){
                 idgameover.innerHTML = "GameOver - Kreuz gewinnt!";
-            }            
-        }
+            }
+            displayResetButton();         
+        } 
+    }
+    function displayResetButton(){
+        resetBtn.style.visibility = "visible";
     }
     function doEverything(feld){
                 
