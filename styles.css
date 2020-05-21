@@ -1,8 +1,14 @@
-
+.kreisCursor{
+    cursor: url("circle3.png"), auto;
+}
+.kreuzCursor{
+    cursor: url("kreuz.png"), auto;
+}
 body{
     border: 1px solid black;
     height: 95vh;
     width: 95vw;
+    margin: auto;
 }
 #tablecontent{
     width: 100%;
@@ -11,11 +17,26 @@ body{
 #field{
     border-collapse: collapse;
     table-layout: fixed;
-    width: 100%;
 }
 #field td{
     border: 1px solid red;
     height: 20vh;
     width: 20vh;
     display: inline-block;
+}
+.Kreuz{
+    background-color: red;
+}
+.Kreis{
+    background-color: blue;
+}
+#resetBtn{
+    visibility: hidden;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }

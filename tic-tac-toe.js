@@ -1,324 +1,174 @@
 //pseudocode
 //var hit = 0, wenn das Feld noch nicht angeklickt wurde, hit = 1 wenn X, hit = 2 wenn O
-//var lasthitkreuz = true, wenn als letztes X gesetzt wurde. = false, wenn als letztes O gesetzt wurde.
+//var isLastHitKreuz = true, wenn als letztes X gesetzt wurde. = false, wenn als letztes O gesetzt wurde.
 //onclick -> if 0 -> schleife . else
 //ein feld = object?
 //properties = dialinksoben, dialinksunten, diarechtsoben, diarechtsunten, links, rechts, oben, unten
 window.onload = function(){
     
-    let a1 = document.getElementById("a1");
-    let a2 = document.getElementById("a2");
-    let a3 = document.getElementById("a3");
-    let b1 = document.getElementById("b1");
-    let b2 = document.getElementById("b2");
-    let b3 = document.getElementById("b3");
-    let c1 = document.getElementById("c1");
-    let c2 = document.getElementById("c2");
-    let c3 = document.getElementById("c3");
+    var a1 = document.getElementById("a1");
+    var a2 = document.getElementById("a2");
+    var a3 = document.getElementById("a3");
+    var b1 = document.getElementById("b1");
+    var b2 = document.getElementById("b2");
+    var b3 = document.getElementById("b3");
+    var c1 = document.getElementById("c1");
+    var c2 = document.getElementById("c2");
+    var c3 = document.getElementById("c3");
     
-    let lasthitkreuz = true;
+    //Tabelle
+    var field = document.getElementById("field");
     
-    var gameover = false;
+    //GameOver-Span
+    var idgameover = document.getElementById("id-gameover");
+
+    //Reset-Button
+    var resetBtn = document.getElementById("resetBtn");
     
+    //Kreis und Kreuz-Button
+    var kreisBtn = document.getElementById("kreisBtn");
+    var kreuzBtn = document.getElementById("kreuzBtn");
+
+    var isLastHitKreuz = true;
     
+    var isGameOver = false;
+    var isKreuzWin = false;
+    var isKreisWin = false;
     
-    //hita1 = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
-    let hita1 = 0;
-    let hita2 = 0;
-    let hita3 = 0;
-    let hitb1 = 0;
-    let hitb2 = 0;
-    let hitb3 = 0;
-    let hitc1 = 0;
-    let hitc2 = 0;
-    let hitc3 = 0;
+    var feldArray = [a1,a2,a3,b1,b2,b3,c1,c2,c3];
     
-    logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-    
-    
-    
-    
-/*     a1.onclick = function(){
-        feldGetsClicked(a1, hita1);
-    } */
-    /**
-    a2.onclick = function(){
-        feldGetsClicked(a2, hita2);
+
+    //Hide Buttons after first click in cell
+    function hideChangeButtons(){
+        kreisBtn.style.visibility = "hidden";
+        kreuzBtn.style.visibility = "hidden";
     }
-    a3.onclick = function(){
-        feldGetsClicked(a3, hitc3);
+
+    kreisBtn.onclick = function(){
+        isLastHitKreuz = true;
+        hideChangeButtons();
+        changeCursor();
     }
-    b1.onclick = function(){
-        feldGetsClicked(b1, hitb1);
+    kreuzBtn.onclick = function(){
+        isLastHitKreuz = false;
+        hideChangeButtons();
+        changeCursor();
     }
-    b2.onclick = function(){
-        feldGetsClicked(b2, hitb2);
-    }
-    b3.onclick = function(){
-        feldGetsClicked(b3, hitc3);
-    }
-    c1.onclick = function(){
-        feldGetsClicked(c1, hitc1);
-    }
-    c2.onclick = function(){
-        feldGetsClicked(c2, hitc2);
-    }
-    c3.onclick = function(){
-        feldGetsClicked(c3, hitc3);
-    } */
-    
-    a1.onclick = function(){
-        if (hita1==0 && gameover==false){
-            if(lasthitkreuz){
-                a1.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hita1 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                a1.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hita1 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    a2.onclick = function(){
-        if (hita2==0 && gameover==false){
-            if(lasthitkreuz){
-                a2.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hita2 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                a2.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hita2 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    a3.onclick = function(){
-        if (hita3==0 && gameover==false){
-            if(lasthitkreuz){
-                a3.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hita3 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                a3.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hita3 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    b1.onclick = function(){
-        if (hitb1==0 && gameover==false){
-            if(lasthitkreuz){
-                b1.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hitb1 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                b1.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hitb1 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    b2.onclick = function(){
-        if (hitb2==0 && gameover==false){
-            if(lasthitkreuz){
-                b2.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hitb2 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                b2.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hitb2 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    b3.onclick = function(){
-        if (hitb3==0 && gameover==false){
-            if(lasthitkreuz){
-                b3.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hitb3 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                b3.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hitb3 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    c1.onclick = function(){
-        if (hitc1==0 && gameover==false){
-            if(lasthitkreuz){
-                c1.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hitc1 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                c1.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hitc1 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    c2.onclick = function(){
-        if (hitc2==0 && gameover==false){
-            if(lasthitkreuz){
-                c2.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hitc2 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                c2.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hitc2 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    c3.onclick = function(){
-        if (hitc3==0 && gameover==false){
-            if(lasthitkreuz){
-                c3.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                hitc3 = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                c3.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                hitc3 = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            }
-        } else{
-            alert("Schon geklickt oder gameover");
-            console.log(gameover);
-        }
-    }
-    feldGetsClicked = function(feld,feldvariable){
-        if(feldvariable==0 && gameover==false){
-            if(lasthitkreuz){
-                feld.innerHTML = "Kreis";
-                lasthitkreuz = false;
-                feldvariable = 1;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
-            } else {
-                feld.innerHTML = "Kreuz";
-                lasthitkreuz = true;
-                feldvariable = 2;
-                logVars(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                gameover = checkWincondition(hita1,hita2,hita3,hitb1,hitb2,hitb3,hitc1,hitc2,hitc3);
-                console.log(gameover);
+
+    //Change Cursor depending on isLastHitKreuz == true
+    function changeCursor(){
+        if(isGameOver==false){
+            if(isLastHitKreuz==true){
+                field.classList.add("kreisCursor");
+                field.classList.remove("kreuzCursor");
+            } else if(isLastHitKreuz==false){
+                field.classList.remove("kreisCursor");
+                field.classList.add("kreuzCursor");
             }
         } else {
-            alert("Schon geklickt oder gamerover");
-            console.log(gameover);
+            field.classList.remove("kreisCursor", "kreuzCursor");
+        }
+        
+    }
+    
+    //[i].hit = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
+    function setHitVariables(){
+        for(let i = 0; i < feldArray.length;i++){
+            feldArray[i].hit = 0;
         }
     }
-}
-
-checkWincondition = function(a1,a2,a3,b1,b2,b3,c1,c2,c3){
-    if  (a1==1 && a2==1 && a3==1 || 
-        a1==1 && b1==1 && c1==1 ||
-        a1==1 && b2==1 && c3==1 ||
-        a3==1 && b2==1 && c1==1 ||
-        a3==1 && b3==1 && c3==1 ||
-        b1==1 && b2==1 && b3==1 ||
-        c1==1 && c2==1 && c3==1 ||
-        a2==1 && b2==1 && c2==1){
-            alert("Kreis gewinnt");
-            return true;
-        } else if   (a1==2 && a2==2 && a3==2 ||
-            a1==2 && b1==2 && c1==2 ||
-            a1==2 && b2==2 && c3==2 ||
-            a3==2 && b2==2 && c1==2 ||
-            a3==2 && b3==2 && c3==2 ||
-            b1==2 && b2==2 && b3==2 ||
-            c1==2 && c2==2 && c3==2 ||
-            a2==2 && b2==2 && c2==2){
-                alert("Kreuz gewinnt");
-                return true;
-            } else
-            alert("Weiter geht's!");
-            return false;
-        }
-        
-logVars = function(){
-            for(let i = 0; i < 9; i++){
-                console.log(i+"="+arguments[i]);
+    
+    //for-loop to create onclick functions
+    function setOnclickFunc(){
+        for(let i = 0; i < feldArray.length;i++){
+            feldArray[i].onclick = function(){
+                doEverything(feldArray[i]);
+                console.log(feldArray[i].hit);
+                console.log(isGameOver);
             }
         }
+    }
+    
+    //set gameover wenn Kreis oder Kreuz gewinnt
+    function setzeGameover(){
+        if(isGameOver==false){
+            if(a1.hit==1 && a2.hit==1 && a3.hit==1 || a1.hit==1 && b1.hit==1 && c1.hit==1 || a1.hit==1 && b2.hit==1 && c3.hit==1 || a3.hit==1 && b2.hit==1 && c1.hit==1 || a3.hit==1 && b3.hit==1 && c3.hit==1 || b1.hit==1 && b2.hit==1 && b3.hit==1 || c1.hit==1 && c2.hit==1 && c3.hit==1 || a2.hit==1 && b2.hit==1 && c2.hit==1){
+                alert("Kreis gewinnt");
+                isKreisWin = true;
+                isGameOver = true;
+            } else if(a1.hit==2 && a2.hit==2 && a3.hit==2 || a1.hit==2 && b1.hit==2 && c1.hit==2 || a1.hit==2 && b2.hit==2 && c3.hit==2 || a3.hit==2 && b2.hit==2 && c1.hit==2 || a3.hit==2 && b3.hit==2 && c3.hit==2 || b1.hit==2 && b2.hit==2 && b3.hit==2 || c1.hit==2 && c2.hit==2 && c3.hit==2 || a2.hit==2 && b2.hit==2 && c2.hit==2){
+                alert("Kreuz gewinnt");
+                isKreuzWin = true;
+                isGameOver = true;
+            } else { 
+                alert("Weiter geht's!");
+                isGameOver = false;
+            }
+        } 
+    }
+    
+    //Wenn gameover==true, dann wird gecheckt, welcher Spieler gewonnen hat und das Ergebnis angezeigt
+    function displayGameOver(){
+        if(isGameOver){
+            if(isKreisWin==true){
+                idgameover.innerHTML = "GameOver - Kreis gewinnt!";
+            } else if(isKreuzWin==true){
+                idgameover.innerHTML = "GameOver - Kreuz gewinnt!";
+            }
+            displayResetButton();         
+        } 
+    }
+    
+    //Zeige ResetButton bei GameOver an, lasse Ihn die Page reloaden
+    function displayResetButton(){
+        resetBtn.style.visibility = "visible";
+        resetBtn.onclick = function(){
+            location.reload();
+        }
+    }
+    
+    //Nested function, takes a1 or b3 etc. as arguments
+    function doEverything(feld){
         
+        //Assigne Hit value 1 wenn kreis gezeichnet, Assigne Hit value 2 wenn kreuz
+        function assignHitvalue(feld){
+            if(feld.hit == 0){
+                if(isLastHitKreuz){
+                    feld.hit = 1;
+                    isLastHitKreuz = false;
+                } else {
+                    feld.hit = 2;
+                    isLastHitKreuz = true;
+                }
+            }
+        }
+        //Assigne Class wenn hit 1 oder hit 2
+        function assignClass(feld){
+            if(feld.hit == 1){
+                feld.classList.toggle("Kreis",true);
+            } else if (feld.hit == 2){
+                feld.classList.toggle("Kreuz",true);
+            }
+        }
+        //
+        if(isGameOver==true){
+            return;
+        }
         
+        //Führe alle Funktionen aus
+        hideChangeButtons();
+        assignHitvalue(feld);
+        assignClass(feld);
+        setzeGameover();
+        changeCursor();
+        displayGameOver();
+    }
+    
+    //Initialise Game:
+    changeCursor();
+    //Setze alle variablen auf 0
+    setHitVariables();
+    //Erstelle onclick-Funktionen, deren Inhalt doEverything() ist.
+    setOnclickFunc();
+    
+}
