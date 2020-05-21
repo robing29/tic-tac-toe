@@ -1,7 +1,9 @@
 # Tic-Tac-Toe
 Tic-Tac-Toe game in JavaScript, written for testing git and my programming skills
 
-First working version. 
+Next: Trying karl's idea of an array and checking a1.hit etc. against aktuellerSpieler == 1 or 2
+
+adopted hungarian notation for variables.
 
 to be done:
 clean up code, trying to shorten the functions
