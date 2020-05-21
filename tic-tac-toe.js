@@ -23,9 +23,14 @@ window.onload = function(){
     var isGameOver = false;
     var isKreuzWin = false;
     var isKreisWin = false;
+
+    var feldArray = [a1,a2,a3,b1,b2,b3,c1,c2,c3];
     
     //hita1 = 0 wenn nicht geklickt. 1 wenn Kreis O, 2 wenn Kreuz X
-    a1.hit = 0;
+    for(let i = 0; i < feldArray.length;i++){
+        feldArray[i].hit = 0;
+        }
+/*     a1.hit = 0;
     a2.hit = 0;
     a3.hit = 0;
     b1.hit = 0;
@@ -33,14 +38,16 @@ window.onload = function(){
     b3.hit = 0;
     c1.hit = 0;
     c2.hit = 0;
-    c3.hit = 0;
+    c3.hit = 0; */
     
-    //Was ist zu tun, wenn gameover erreich ist? Nichts machen
-/*     function ifgameover(){
-        if(isGameOver==true){
-            return;
+    //for-loop to create onclick functions
+    for(let i = 0; i < feldArray.length;i++){
+        feldArray[i].onclick = function(){
+            doEverything(feldArray[i]);
+            console.log(feldArray[i].hit);
+            console.log(isGameOver);
         }
-    } */
+    }
 
     //set gameover wenn Kreis oder Kreuz gewinnt
     function setzeGameover(){
@@ -98,8 +105,8 @@ window.onload = function(){
         setzeGameover();
         displayGameOver();
     }
-    
-    a1.onclick = function(){
+
+  /*   a1.onclick = function(){
         doEverything(a1);
         console.log(a1.hit);
         console.log(isGameOver);
@@ -143,5 +150,5 @@ window.onload = function(){
         doEverything(c3);
         console.log(c3.hit);
         console.log(isGameOver);
-    }
+    } */
 }
