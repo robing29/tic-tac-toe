@@ -116,7 +116,7 @@ window.onload = function(){
                 isKreuzWin = false;
                 isKreisWin = false;
                 isRemis = true;
-                console.log("Ist Remis");
+                alert("Unentschieden");
             } else { 
                 isGameOver = false;
             }
@@ -130,6 +130,8 @@ window.onload = function(){
                 idgameover.innerHTML = "GameOver - Kreis gewinnt!";
             } else if(isKreuzWin==true){
                 idgameover.innerHTML = "GameOver - Kreuz gewinnt!";
+            } else if(isRemis==true){
+                idgameover.innerHTML = "GameOver - Unentschieden";
             }
             displayResetButton();         
         } 
