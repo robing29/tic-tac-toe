@@ -6,11 +6,12 @@ Working version of the game
 to be done:
 
 clean up code, trying to shorten the functions (Halfway there);
-- replace alerts with css classnames
+- replace alerts with animated gameOver Texts.
 - display proper gameover message
 - proper styling and design
 - table bigger, but still have square cells
-- Animate GameOver Text: Kreis gewinnt!
+-> Bootstrap this shit!
+
 
 done:
 - use button to reset the playing field
