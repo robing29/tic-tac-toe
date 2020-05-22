@@ -4,7 +4,7 @@
 .kreuzCursor{
     cursor: url("kreuz.png"), auto;
 }
-body{
+/* body{
     border: 1px solid black;
     height: 95vh;
     width: 95vw;
@@ -13,7 +13,7 @@ body{
 #tablecontent{
     width: 100%;
     height: 100%;
-}
+} */
 #field{
     border-collapse: collapse;
     table-layout: fixed;
@@ -53,13 +53,13 @@ body{
 #resetBtn{
     visibility: hidden;
 }
-footer{
+/* footer{
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-}
+} */
 .Kreuz{
     position: relative;
     height: 100%;
