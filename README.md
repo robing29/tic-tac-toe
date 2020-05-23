@@ -10,7 +10,11 @@ clean up code, trying to shorten the functions (Halfway there);
 - display proper gameover message
 - proper styling and design
 - table bigger, but still have square cells
+- add media queries, so that the table looks good everywhere
 -> Bootstrap this shit!
+
+//https://stackoverflow.com/questions/43954090/resize-html-table-width-based-on-screen-size
+//https://stackoverflow.com/questions/22835430/make-table-cells-square
 
 
 done:

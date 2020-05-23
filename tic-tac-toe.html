@@ -12,38 +12,53 @@
     <script src="tic-tac-toe.js"></script>
 </head>
 <body>
-    <div id="content" class="jumbotron text-center">
-        <h1>Tic-Tac-Toe</h1>
+    <div class="container-fluid">
+        <div class="row pr-3 pl-3">
+            <div class="col my-3 bg-primary text-white text-center">
+                <h1 class="display-1">Tic-Tac-Toe</h1>
+                <p class="display-4">X || O</p>                
+            </div>
+        </div>
+        <div class="row pr-3 pl-3 text-center justify-content-center w-100">
+            <div class="col-auto">
+                <table id="field" class="">
+                    <tr>
+                        <td class="cell" id="a1"></td>
+                        <td class="cell" id="a2"></td>
+                        <td class="cell" id="a3"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell" id="b1"></td>
+                        <td class="cell" id="b2"></td>
+                        <td class="cell" id="b3"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell" id="c1"></td>
+                        <td class="cell" id="c2"></td>
+                        <td class="cell" id="c3"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row pr-3 pl-3 text-center">
+            <div class="col">col</div>
+            <div class="col">Mittig</div>
+            <div class="col">
+                <span id="startwith">Starte mit: </span><span><button type="button" id="kreisBtn">Kreis</button><button type="button" id="kreuzBtn">Kreuz</button></span>
+                <span id="id-gameover"></span><button type="button" id="resetBtn">Neues Spiel!</button>
+            </div>
+        </div>
+        <div class="row pr-3 pl-3">
+            <div class="col">
+                <footer>
+                    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                    <div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     </div>
-    <div id="tablecontent" class="container">
-        <table id="field">
-            <tr>
-                <td class="cell" id="a1"></td>
-                <td class="cell" id="a2"></td>
-                <td class="cell" id="a3"></td>
-            </tr>
-            <tr>
-                <td class="cell" id="b1"></td>
-                <td class="cell" id="b2"></td>
-                <td class="cell" id="b3"></td>
-            </tr>
-            <tr>
-                <td class="cell" id="c1"></td>
-                <td class="cell" id="c2"></td>
-                <td class="cell" id="c3"></td>
-            </tr>
-        </table>
-    </div>
-</div>
-<span id="startwith">Starte mit: </span><span><button type="button" id="kreisBtn">Kreis</button><button type="button" id="kreuzBtn">Kreuz</button></span>
-<span id="id-gameover"></span><button type="button" id="resetBtn">Neues Spiel!</button>
-
-<footer>
-    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-    <div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-</footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
