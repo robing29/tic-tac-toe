@@ -19,32 +19,43 @@
                 <p class="display-4">X || O</p>                
             </div>
         </div>
-        <div class="row pr-3 pl-3 text-center justify-content-center w-100">
+        <div class="row pr-3 pl-3 text-center justify-content-between w-100">
+            <div class="col-1">
+                    <span id="startwith">Starte mit: </span>
+                    <button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button>
+                    <button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button>
+            </div>
             <div class="col-auto">
-                <table id="field" class="">
+                <table id="field" class="shadow-lg">
                     <tr>
-                        <td class="cell" id="a1"></td>
-                        <td class="cell" id="a2"></td>
-                        <td class="cell" id="a3"></td>
+                        <td class="cell shadow" id="a1"></td>
+                        <td class="cell shadow" id="a2"></td>
+                        <td class="cell shadow" id="a3"></td>
                     </tr>
                     <tr>
-                        <td class="cell" id="b1"></td>
-                        <td class="cell" id="b2"></td>
-                        <td class="cell" id="b3"></td>
+                        <td class="cell shadow" id="b1"></td>
+                        <td class="cell shadow" id="b2"></td>
+                        <td class="cell shadow" id="b3"></td>
                     </tr>
                     <tr>
-                        <td class="cell" id="c1"></td>
-                        <td class="cell" id="c2"></td>
-                        <td class="cell" id="c3"></td>
+                        <td class="cell shadow" id="c1"></td>
+                        <td class="cell shadow" id="c2"></td>
+                        <td class="cell shadow" id="c3"></td>
                     </tr>
                 </table>
             </div>
+            <div class="col-1">test</div>
         </div>
-        <div class="row pr-3 pl-3 text-center">
-            <div class="col">col</div>
+        <div class="row pr-3 pl-3 pt-3 text-center">
+            <div class="col">
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    Gewonnen!
+                </div>
+            </div>
             <div class="col">Mittig</div>
             <div class="col">
-                <span id="startwith">Starte mit: </span><span><button type="button" id="kreisBtn">Kreis</button><button type="button" id="kreuzBtn">Kreuz</button></span>
+                <span id="startwith">Starte mit: </span><span><button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button><button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button></span>
                 <span id="id-gameover"></span><button type="button" id="resetBtn">Neues Spiel!</button>
             </div>
         </div>

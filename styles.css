@@ -113,3 +113,12 @@ td{
 .Kreuz::after {
     transform: rotate(-45deg);
 }
+/* .alert{
+    position:relative;
+ }
+ .close{
+   position:absolute;
+   top:48%;
+   right:35px;
+   line-height:0;
+ } */
