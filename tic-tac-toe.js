@@ -122,11 +122,9 @@ window.onload = function(){
     function setzeGameover(){
         if(isGameOver==false){
             if(a1.hit==1 && a2.hit==1 && a3.hit==1 || a1.hit==1 && b1.hit==1 && c1.hit==1 || a1.hit==1 && b2.hit==1 && c3.hit==1 || a3.hit==1 && b2.hit==1 && c1.hit==1 || a3.hit==1 && b3.hit==1 && c3.hit==1 || b1.hit==1 && b2.hit==1 && b3.hit==1 || c1.hit==1 && c2.hit==1 && c3.hit==1 || a2.hit==1 && b2.hit==1 && c2.hit==1){
-                alert("Kreis gewinnt");
                 isKreisWin = true;
                 isGameOver = true;
             } else if(a1.hit==2 && a2.hit==2 && a3.hit==2 || a1.hit==2 && b1.hit==2 && c1.hit==2 || a1.hit==2 && b2.hit==2 && c3.hit==2 || a3.hit==2 && b2.hit==2 && c1.hit==2 || a3.hit==2 && b3.hit==2 && c3.hit==2 || b1.hit==2 && b2.hit==2 && b3.hit==2 || c1.hit==2 && c2.hit==2 && c3.hit==2 || a2.hit==2 && b2.hit==2 && c2.hit==2){
-                alert("Kreuz gewinnt");
                 isKreuzWin = true;
                 isGameOver = true;
             } else if (isHit == true && isGameOver == false){
@@ -134,7 +132,6 @@ window.onload = function(){
                 isKreuzWin = false;
                 isKreisWin = false;
                 isRemis = true;
-                alert("Unentschieden");
             } else { 
                 isGameOver = false;
             }
@@ -145,11 +142,14 @@ window.onload = function(){
     function displayGameOver(){
         if(isGameOver){
             if(isKreisWin==true){
-                idgameover.innerHTML = "GameOver - Kreis gewinnt!";
+                idGameOverAlert.style.visibility = "visible";
+                idGameOverAlert.innerHTML = "<strong>GameOver - Kreis gewinnt!</strong>"
             } else if(isKreuzWin==true){
-                idgameover.innerHTML = "GameOver - Kreuz gewinnt!";
+                idGameOverAlert.style.visibility = "visible";
+                idGameOverAlert.innerHTML = "<strong>GameOver - Kreuz gewinnt!</strong>";
             } else if(isRemis==true){
-                idgameover.innerHTML = "GameOver - Unentschieden";
+                idGameOverAlert.style.visibility = "visible";
+                idGameOverAlert.innerHTML = "<strong>GameOver - Unentschieden</strong>";
             }
             displayResetButton();         
         } 

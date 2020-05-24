@@ -12,13 +12,13 @@
     <script src="tic-tac-toe.js"></script>
 </head>
 <body>
-    <div class="container-fluid h-100">
-        <div class="row pr-3 pl-3">
+    <div class="container-fluid h-100 pr-10 pl-10">
+        <div class="row">
             <div class="col my-3 bg-primary text-white text-center">
                 <h1 class="display-1">Tic-Tac-Toe</h1>              
             </div>
         </div>
-        <div class="row pr-3 pl-3 text-center justify-content-around w-100 h-100">
+        <div class="row text-center justify-content-around w-100 h-100">
             <div class="col-auto order-2 d-block">
                 <table id="field" class="shadow-lg">
                     <tr>
@@ -40,13 +40,13 @@
             </div>
             
             <div class="col-2 order-1 d-none d-lg-block d-xl-block align-self-center" id="id-startwith">
-                <p id="startwith" class="">Starte mit: </p>
+                <p id="startwith" class=""><strong>Starte mit: </strong></p>
                 <div class="row">
                     <div class="col-6"><button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button></div>
                     <div class="col-6"><button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button></div>
                 </div>
             </div>
-            <div class="col-2 order-3 d-none d-lg-block d-xl-block">test</div>
+            <div class="col-2 order-3 d-none d-lg-block d-xl-block"></div>
         </div>
         
         
@@ -60,9 +60,9 @@
     </div>
     <div class="row pt-3 text-center">
         <div class="col">
-            <div class="alert alert-info alert-dismissible fade show">
+            <div class="alert alert-info fade show" id="id-alert" style="visibility: hidden;">
                 <strong>Viel Spaß!</strong>
-                <button type="button" class="close" data-dismiss="alert" id="id-alert">&times;</button>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
             </div>
         </div>
     </div>
