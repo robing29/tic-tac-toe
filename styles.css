@@ -9,7 +9,7 @@ body{
     height: 95vh;
     width: 95vw;
     margin: auto; */
-    background-color: rgb(196, 196, 196);
+    background-color:beige;
 }
 /* #tablecontent{
     width: 100%;
@@ -27,7 +27,7 @@ body{
 /* } */
 table {
     table-layout: fixed;
-    width: 38vw;
+    width: 37vw;
 }
 td{
     border: 1px solid black;
@@ -70,7 +70,7 @@ td{
 .Kreis::after{
     position: relative;
     align-self: center;
-    background-color:rgb(196, 196, 196);
+    background-color: beige;
     width: 65%;
     height: 65%;
     border-radius: 50%;
