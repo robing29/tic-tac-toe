@@ -19,13 +19,8 @@
                 <p class="display-4">X || O</p>                
             </div>
         </div>
-        <div class="row pr-3 pl-3 text-center justify-content-between w-100">
-            <div class="col-1">
-                    <span id="startwith">Starte mit: </span>
-                    <button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button>
-                    <button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button>
-            </div>
-            <div class="col-auto">
+        <div class="row pr-3 pl-3 text-center justify-content-around w-100">
+            <div class="col-auto order-2 d-block">
                 <table id="field" class="shadow-lg">
                     <tr>
                         <td class="cell shadow" id="a1"></td>
@@ -44,7 +39,13 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-1">test</div>
+            <div class="col-1 order-1 d-none d-lg-block d-xl-block">
+                    <span id="startwith">Starte mit: </span>
+                    <button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button>
+                    <button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button>
+            </div>
+            
+            <div class="col-1 order-3 d-none d-lg-block d-xl-block">test</div>
         </div>
         <div class="row pr-3 pl-3 pt-3 text-center">
             <div class="col">

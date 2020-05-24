@@ -15,7 +15,7 @@ to be done:
 
 - GameOver mit alerts umsetzen? Billige Variante (Auch billig: MIt Toasts)
 - On big screens: Display buttons beside playing field
-- On small screens: Display buttons below playing field, but zoom towards it
+- On small screens: Display buttons below playing field
 -https://stackoverflow.com/questions/37814508/order-columns-through-bootstrap4
 
 //https://stackoverflow.com/questions/43954090/resize-html-table-width-based-on-screen-size
