@@ -21,6 +21,7 @@ window.onload = function(){
     
     //GameOver-Span
     var idgameover = document.getElementById("id-gameover");
+    var idGameOverAlert = document.getElementById("id-alert")
 
     //Reset-Button
     var resetBtn = document.getElementById("resetBtn");
@@ -28,7 +29,12 @@ window.onload = function(){
     //Kreis und Kreuz-Button
     var kreisBtn = document.getElementById("kreisBtn");
     var kreuzBtn = document.getElementById("kreuzBtn");
-    var startWith = this.document.getElementById("startwith");
+    var kreisBtn2 = document.getElementById("kreisBtn2");
+    var kreuzBtn2 = document.getElementById("kreuzBtn2");
+    var startWith = document.getElementById("startwith");
+    var startWithdiv1 = document.getElementById("id-startwith");
+    var startWithdiv2 = document.getElementById("id-startwith2");
+
 
     var isLastHitKreuz = true;
     var isHit = false;
@@ -46,6 +52,8 @@ window.onload = function(){
         kreisBtn.style.visibility = "hidden";
         kreuzBtn.style.visibility = "hidden";
         startWith.style.visibility = "hidden";
+        startWithdiv1.style.visibility = "hidden";
+        startWithdiv2.style.visibility = "hidden";
     }
 
     kreisBtn.onclick = function(){
@@ -54,6 +62,16 @@ window.onload = function(){
         changeCursor();
     }
     kreuzBtn.onclick = function(){
+        isLastHitKreuz = false;
+        hideChangeButtons();
+        changeCursor();
+    }
+    kreisBtn2.onclick = function(){
+        isLastHitKreuz = true;
+        hideChangeButtons();
+        changeCursor();
+    }
+    kreuzBtn2.onclick = function(){
         isLastHitKreuz = false;
         hideChangeButtons();
         changeCursor();

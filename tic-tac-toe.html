@@ -12,14 +12,13 @@
     <script src="tic-tac-toe.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid h-100">
         <div class="row pr-3 pl-3">
             <div class="col my-3 bg-primary text-white text-center">
-                <h1 class="display-1">Tic-Tac-Toe</h1>
-                <p class="display-4">X || O</p>                
+                <h1 class="display-1">Tic-Tac-Toe</h1>              
             </div>
         </div>
-        <div class="row pr-3 pl-3 text-center justify-content-around w-100">
+        <div class="row pr-3 pl-3 text-center justify-content-around w-100 h-100">
             <div class="col-auto order-2 d-block">
                 <table id="field" class="shadow-lg">
                     <tr>
@@ -39,38 +38,47 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-1 order-1 d-none d-lg-block d-xl-block">
-                    <span id="startwith">Starte mit: </span>
-                    <button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button>
-                    <button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button>
-            </div>
             
-            <div class="col-1 order-3 d-none d-lg-block d-xl-block">test</div>
-        </div>
-        <div class="row pr-3 pl-3 pt-3 text-center">
-            <div class="col">
-                <div class="alert alert-success alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    Gewonnen!
+            <div class="col-2 order-1 d-none d-lg-block d-xl-block align-self-center" id="id-startwith">
+                <p id="startwith" class="">Starte mit: </p>
+                <div class="row">
+                    <div class="col-6"><button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button></div>
+                    <div class="col-6"><button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button></div>
                 </div>
             </div>
-            <div class="col">Mittig</div>
-            <div class="col">
-                <span id="startwith">Starte mit: </span><span><button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button><button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button></span>
-                <span id="id-gameover"></span><button type="button" id="resetBtn">Neues Spiel!</button>
-            </div>
+            <div class="col-2 order-3 d-none d-lg-block d-xl-block">test</div>
         </div>
-        <div class="row pr-3 pl-3">
-            <div class="col">
-                <footer>
-                    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-                    <div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-                </footer>
-            </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        
+        
     </div>
+    <div class="row pt-3 text-center d-block d-lg-none" id="id-startwith2">
+        <div class="col">
+            <p id="startwith-below" class="">Starte mit:</p>
+            <button type="button" id="kreisBtn2" class="btn-lg btn-outline-info">Kreis</button>
+            <button type="button" id="kreuzBtn2" class="btn-lg btn-outline-danger">Kreuz</button>
+        </div>
+    </div>
+    <div class="row pt-3 text-center">
+        <div class="col">
+            <div class="alert alert-info alert-dismissible fade show">
+                <strong>Viel Spaß!</strong>
+                <button type="button" class="close" data-dismiss="alert" id="id-alert">&times;</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="row justify-content-around text-center">
+            <div class="col-6">
+                <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            </div>
+            <div class="col-6">
+                <div>Icons made by <a href="https://www.flaticon.com/authors/xnimrodx" title="xnimrodx">xnimrodx</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</div>
 </body>
 </html>
