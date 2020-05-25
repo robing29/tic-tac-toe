@@ -24,16 +24,20 @@ window.onload = function(){
     var idGameOverAlert = document.getElementById("id-alert")
 
     //Reset-Button
-    var resetBtn = document.getElementById("resetBtn");
+    var resetBtn = document.getElementById("resetBtn1");
+    var resetBtn2 = document.getElementById("resetBtn2");
+    var resetBtn2div = document.getElementById("resetBtn2div");
+    var resetBtn1div = document.getElementById("resetBtn1div");
     
     //Kreis und Kreuz-Button
     var kreisBtn = document.getElementById("kreisBtn");
     var kreuzBtn = document.getElementById("kreuzBtn");
     var kreisBtn2 = document.getElementById("kreisBtn2");
     var kreuzBtn2 = document.getElementById("kreuzBtn2");
-    var startWith = document.getElementById("startwith");
-    var startWithdiv1 = document.getElementById("id-startwith");
-    var startWithdiv2 = document.getElementById("id-startwith2");
+    var startWith1 = document.getElementById("startwith1"); //p-startwith1
+    var startWith2 = document.getElementById("startwith2"); //p-startwith2
+    var startWithdiv1 = document.getElementById("startwith1div");
+    var startWithdiv2 = document.getElementById("startwith2div");
 
 
     var isLastHitKreuz = true;
@@ -51,9 +55,12 @@ window.onload = function(){
     function hideChangeButtons(){
         kreisBtn.style.visibility = "hidden";
         kreuzBtn.style.visibility = "hidden";
-        startWith.style.visibility = "hidden";
-        startWithdiv1.style.visibility = "hidden";
-        startWithdiv2.style.visibility = "hidden";
+        kreisBtn2.style.visibility = "hidden";
+        kreuzBtn2.style.visibility = "hidden";
+        startWith1.style.visibility = "hidden";
+        startWith2.style.visibility = "hidden";
+        startWithdiv2.classList.remove("d-block");
+        startWithdiv2.classList.add("d-none");
     }
 
     kreisBtn.onclick = function(){
@@ -157,8 +164,16 @@ window.onload = function(){
     
     //Zeige ResetButton bei GameOver an, lasse Ihn die Page reloaden
     function displayResetButton(){
-        resetBtn.style.visibility = "visible";
+        resetBtn1div.classList.remove("d-lg-none");
+        resetBtn1div.classList.add("d-lg-block");
+        resetBtn1div.classList.remove("d-xl-none");
+        resetBtn1div.classList.add("d-xl-block");
         resetBtn.onclick = function(){
+            location.reload();
+        }
+        resetBtn2div.classList.remove("d-none");
+        resetBtn2div.classList.add("d-block");
+        resetBtn2div.onclick = function(){
             location.reload();
         }
     }

@@ -39,23 +39,38 @@
                 </table>
             </div>
             
-            <div class="col-2 order-1 d-none d-lg-block d-xl-block align-self-center" id="id-startwith">
-                <p id="startwith" class=""><strong>Starte mit: </strong></p>
-                <div class="row">
-                    <div class="col-6"><button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button></div>
-                    <div class="col-6"><button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button></div>
+            <div class="col-3 order-1 d-none d-lg-block d-xl-block align-self-center" id="id-startwith">
+                <p id="startwith1" class=""><strong>Starte mit: </strong></p>
+                <div class="row justify-content-center">
+                    <div class="col-auto"><button type="button" id="kreisBtn" class="btn-lg btn-outline-info">Kreis</button></div>
+                    <div class="col-auto"><button type="button" id="kreuzBtn" class="btn-lg btn-outline-danger">Kreuz</button></div>
                 </div>
+                <div class="row d-none d-lg-none d-xl-none" id="resetBtn1div">
+                    <div class="col"><button type="button" id="resetBtn1" class="btn-lg btn-outline-primary">Neues Spiel</button></div>
+                </div>
+                
             </div>
-            <div class="col-2 order-3 d-none d-lg-block d-xl-block"></div>
+            <div class="col-3 order-3 d-none d-lg-block d-xl-block"></div>
         </div>
         
         
     </div>
-    <div class="row pt-3 text-center d-block d-lg-none" id="id-startwith2">
+    <div class="row pt-3 text-center d-block d-lg-none">
         <div class="col">
-            <p id="startwith-below" class="">Starte mit:</p>
-            <button type="button" id="kreisBtn2" class="btn-lg btn-outline-info">Kreis</button>
-            <button type="button" id="kreuzBtn2" class="btn-lg btn-outline-danger">Kreuz</button>
+            <div class="row d-none d-lg-none" id="resetBtn2div">
+                <div class="col">
+                    <button type="button" id="resetBtn2" class="btn-lg btn-outline-primary">Neues Spiel</button>
+                </div>
+            </div>
+            <div class="row d-block d-lg-none justify-content-around" id="startwith2div">
+                <div class="col">
+                    <p id="startwith2" class="">Starte mit:</p>
+                    <button type="button" id="kreisBtn2" class="btn-lg btn-outline-info">Kreis</button>
+                    <button type="button" id="kreuzBtn2" class="btn-lg btn-outline-danger">Kreuz</button>
+                </div>
+            </div>
+
+            
         </div>
     </div>
     <div class="row pt-3 text-center">
